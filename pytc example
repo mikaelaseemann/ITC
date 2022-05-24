@@ -1,0 +1,16 @@
+import pytc
+
+# Load in integrated heats from an ITC experiment
+e = pytc.ITCExperiment("demos/ca-edta/tris-01.DH",
+                       pytc.indiv_models.SingleSite)
+
+# Create the global fitter, add the experiment
+g = pytc.GlobalFit()
+g.add_experiment(e)
+
+# Do the fit
+g.fit()
+
+# Print the results out
+g.plot()
+print(g.fit_as_csv)
